@@ -7,8 +7,7 @@ class Mercury {
 	
 	/*
 	 * 	Twitter related variables 
-	 * 
-	*/
+	 */
 	private $twitter = null;
 	private $twitter_username = null;
 	private $twitter_password = null;
@@ -17,13 +16,48 @@ class Mercury {
 	
 	function Mercury()
 	{
-		//$this->notify_user("Twitter","Alastair Dewar has just sent you a tweet.");
+		
 	}
 	
 	public function listen()
 	{
+		$this->query_twitter();
 		$this->check_twitter();	
+		$this->query_facebook();
+		$this->check_facebook();
+		$this->query_bebo();
+		$this->check_bebo();
+		$this->query_windows_live_messenger();
+		$this->check_windows_live_messenger();
+		$this->query_myspace();
+		$this->check_myspace();
+		$this->query_google_talk();
+		$this->check_google_talk();					
 	}
+	
+	private function check_facebook(){}
+	private function query_facebook(){}
+	public function setup_facebook($facebook_username, $facebook_password){}
+	
+	private function check_bebo(){}
+	private function query_bebo(){}
+	public function setup_bebo($bebo_username, $bebo_password){}
+	
+	private function check_windows_live_messenger(){}
+	private function query_windows_live_messenger(){}
+	public function setup_windows_live_messenger($wlm_username, $wlm_password){}
+	
+	private function check_myspace(){}
+	private function query_myspace(){}
+	public function setup_myspace($myspace_username, $myspace_password){}
+	
+	private function check_yahoo_messenger(){}
+	private function query_yahoo_messenger(){}
+	public function setup_yahoo_messenger($yahoo_username, $yahoo_password){}
+	
+	private function check_google_talk(){}
+	private function query_google_talk(){}
+	public function setup_google_talk($google_username, $google_password){}
 	
 	private function check_twitter()
 	{
@@ -109,6 +143,5 @@ class Mercury {
 			}
 		}
 	} 
-	
 }
 ?>
