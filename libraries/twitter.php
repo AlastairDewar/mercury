@@ -11,7 +11,8 @@
  * @subpackage classes
  */
 
-class twitter extends Mercury{
+class twitter extends Protocol {
+	
 	/**
 	 * Authenticating Twitter user
 	 * @var string
@@ -58,6 +59,10 @@ class twitter extends Mercury{
 	 */
 	 var $debug = false;
     
+	 var $latest = "Thu Feb 26 16:38:31 +0000 2009";
+	 
+	 var $protocol_name = "Twitter";
+	 
 	function twitter()
 	{
 		// Nothing
@@ -821,6 +826,19 @@ class twitter extends Mercury{
 	    
 	    return '?' . substr( $query_string, 0, strlen( $query_string )-1 );
 	}
+	
+	function query()
+	{
+		$replies = $this->getReplies(false/*, $this->latest*/);
+		$replies2 = array();
+		print_r($replies);
+		foreach($replies as $reply){
+			$message = $reply->name." sent you a tweet";
+			array_push($replies2, $message);
+			#$this->latest = $reply->created_at;
+		}
+		return $replies2;
+	}
 }
 
 /**
@@ -862,6 +880,7 @@ class summize extends twitter
 	    
 	    return $this->objectify( $this->process( $request ) );
 	}
+	
 }
 
 ?>
